@@ -80,3 +80,4 @@ end
 # Added gems
 #
 gem "devise"
+gem "faker"
