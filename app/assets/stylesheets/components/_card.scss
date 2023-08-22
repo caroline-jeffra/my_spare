@@ -19,14 +19,17 @@
 
 .card-instrument {
   overflow: hidden;
-  background: white;
+  background: rgb(234, 234, 234);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 1rem;
 }
 
 .card-instrument:hover  {
-  background: rgba(230, 230, 230, 0.1);
+  background: rgb(255, 255, 255);
   transition-delay:0.08s;
+  transform: translateY(-8px);
+  transition: transform 0.5s;
+  box-shadow: 0 0 18px rgba(0,0,0,0.5);
 }
 
 .card-instrument > img {
