@@ -1,8 +1,6 @@
 class InstrumentsController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit]
   def index
-    @instruments = search_params
-    raise
   end
 
   def show
