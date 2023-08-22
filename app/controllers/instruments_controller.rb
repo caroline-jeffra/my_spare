@@ -1,5 +1,6 @@
 class InstrumentsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new edit]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+
   def index
   end
 
