@@ -1,2 +1,17 @@
-<h1>Instruments#show</h1>
-<p>Find me in app/views/instruments/show.html.erb</p>
+<h1>A <%= @instrument.category %> offered by <%= @user.first_name %> <%= @user.last_name[0] %>.</h1>
+<div class="d-flex align-contents-center">
+  <div class="col-5">
+    <%= image_tag @instrument.image_url, alt: "Image of #{@instrument.category}", height: 400 %>
+  </div>
+  <div class="col-5">
+    <h2>
+      <%= @instrument.model %>, <%= @instrument.brand %>
+    </h2>
+    <h3>
+      Located in <%= @instrument.city %> for <%= @instrument.daily_price %> per day.
+    </h3>
+    <p>
+      Description: <%= @instrument.description %>
+    </p>
+  </div>
+</div>
