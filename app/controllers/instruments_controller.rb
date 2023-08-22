@@ -32,14 +32,14 @@ class InstrumentsController < ApplicationController
 
   def instrument_params
     params.require(:instrument)
-      .permit(
-        :model,
-        :brand,
-        :category,
-        :daily_price,
-        :description,
-        :image_url)
-      .merge(user: current_user)
+          .permit(
+            :model,
+            :brand,
+            :category,
+            :daily_price,
+            :description,
+            :image_url
+          ).merge(user: current_user)
   end
 
   # for future use
