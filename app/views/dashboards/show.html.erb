@@ -1,1 +1,9 @@
-<h1>Dashboar. Show</h1>
+<h1>Hi <%= current_user.first_name %>, this is your Dashboard</h1>
+
+
+<h2>Your instruments</h2>
+<div>
+  <% @instruments.each do |instrument| %>
+    <p><%= instrument.brand %> - owned by <%= instrument.user.first_name %></p>
+  <% end %>
+</div>

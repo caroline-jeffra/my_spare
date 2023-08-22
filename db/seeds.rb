@@ -37,6 +37,7 @@ puts "Pythagoras had the first dream of what will be known as the monochord (cre
     last_name: Faker::Name.last_name,
     city: "Amsterdam"
   ).save!
+
   2.times do
     Instrument.new(
       model: Faker::Music.genre,
