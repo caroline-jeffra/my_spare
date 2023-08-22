@@ -1,0 +1,25 @@
+<%= simple_form_for instrument do |f| %>
+  <%= f.input :model %>
+  <%= f.input :brand %>
+  <%= f.input :category %>
+  <%= f.input :daily_price %>
+  <%= f.input :description %>
+  <%= f.input :image_url %>
+  <%= f.submit %>
+<% end %>
+
+<%# <%= form_for(:instrument, html: { class: "d-flex flex-column" }) do |f| %1> %>
+<%#   <%= f.label "Model" %1> %>
+<%#   <%= f.text_field :model %1> %>
+<%#   <%= f.label "Brand" %1> %>
+<%#   <%= f.text_field :brand %1> %>
+<%#   <%= f.label "Category" %1> %>
+<%#   <%= f.text_field :category %1> %>
+<%#   <%= f.label "Price per day" %1> %>
+<%#   <%= f.text_field :daily_price %1> %>
+<%#   <%= f.label "Description" %1> %>
+<%#   <%= f.text_field :description %1> %>
+<%#   <%= f.label "Image URL" %1> %>
+<%#   <%= f.text_field :image_url %1> %>
+<%#   <%= f.submit %1> %>
+<%# <% end %1> %>
