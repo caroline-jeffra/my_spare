@@ -4,6 +4,8 @@ class InstrumentsController < ApplicationController
   end
 
   def show
+    @instrument = Instrument.find(params[:id])
+    @user = User.find(@instrument.user_id)
   end
 
   def new
