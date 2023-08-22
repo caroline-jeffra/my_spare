@@ -38,7 +38,8 @@ class InstrumentsController < ApplicationController
             :category,
             :daily_price,
             :description,
-            :image_url
+            :image_url,
+            :city
           ).merge(user: current_user)
   end
 
