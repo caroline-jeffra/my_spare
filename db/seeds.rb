@@ -22,9 +22,9 @@ puts "Introducing music to humankind (creating users)"
 end
 
 # The following are instrument owners:
-user1 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: Faker::Address.city)
-user2 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: Faker::Address.city)
-user3 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: Faker::Address.city)
+user1 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: "Amsterdam")
+user2 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: "Amsterdam")
+user3 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: "Den Haag")
 user4 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: Faker::Address.city)
 user5 = User.create(email: Faker::Internet.email, encrypted_password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: Faker::Address.city)
 
@@ -34,17 +34,17 @@ puts "Pythagoras had the first dream of what will be known as the monochord (cre
 
 # User-1's instruments:
 2.times do
-  Instrument.create(model: Faker::Music.genre, brand: Faker::Ancient.god, category: Faker::Music.instrument, daily_price: Faker::Number.decimal, description: Faker::Quotes::Shakespeare.hamlet_quote, image_url: "https://images.pexels.com/photos/270288/pexels-photo-270288.jpeg?auto=compress&cs=tinysrgb&w=800", user_id: user1.id)
+  Instrument.create(model: Faker::Music.genre, brand: Faker::Ancient.god, category: "Microphone", daily_price: Faker::Number.decimal, description: Faker::Quotes::Shakespeare.hamlet_quote, image_url: "https://images.pexels.com/photos/270288/pexels-photo-270288.jpeg?auto=compress&cs=tinysrgb&w=800", user_id: user1.id)
 end
 
 # User-2's instruments:
 3.times do
-  Instrument.create(model: Faker::Music.genre, brand: Faker::Ancient.god, category: Faker::Music.instrument, daily_price: Faker::Number.decimal, description: Faker::Quotes::Shakespeare.hamlet_quote, image_url: "https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", user_id: user2.id)
+  Instrument.create(model: Faker::Music.genre, brand: Faker::Ancient.god, category: "Guitar", daily_price: Faker::Number.decimal, description: Faker::Quotes::Shakespeare.hamlet_quote, image_url: "https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", user_id: user2.id)
 end
 
 # User-3's instruments:
 4.times do
-  Instrument.create(model: Faker::Music.genre, brand: Faker::Ancient.god, category: Faker::Music.instrument, daily_price: Faker::Number.decimal, description: Faker::Quotes::Shakespeare.hamlet_quote, image_url: "https://images.pexels.com/photos/1246437/pexels-photo-1246437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2," user_id: user3.id)
+  Instrument.create(model: Faker::Music.genre, brand: Faker::Ancient.god, category: Faker::Music.instrument, daily_price: Faker::Number.decimal, description: Faker::Quotes::Shakespeare.hamlet_quote, image_url: "https://images.pexels.com/photos/1246437/pexels-photo-1246437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2,", user_id: user3.id)
 end
 
 # User-4's instruments:
