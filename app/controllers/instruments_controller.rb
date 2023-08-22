@@ -1,6 +1,7 @@
 class InstrumentsController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit]
   def index
+    @instruments = Instrument.all
   end
 
   def show

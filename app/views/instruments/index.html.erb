@@ -1,2 +1,22 @@
 <h1>Instruments#index</h1>
 <p>Find me in app/views/instruments/index.html.erb</p>
+
+<div id="main-container" class="main-container">
+  <div class="cards">
+    <% @instruments.each do |instrument| %>
+      <%# <% link_to instrument_path(instrument) do %> %>
+        <div class="card-instrument">
+            <img src=<%=instrument.image_url%>/>
+            <div class="card-instrument-infos">
+              <div>
+                <h3>Brand: <%=instrument.brand%>, Model: <%=instrument.model%></h3>
+                <p><%=instrument.category%></p>
+                <p><%=instrument.city%></p>
+              </div>
+              <h3 class="card-instrument-pricing"><%=instrument.daily_price%></h3>
+            </div>
+        </div>
+      <%# <% end %> %>
+    <% end %>
+  </div>
+</div>
