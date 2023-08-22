@@ -4,7 +4,7 @@
 <div id="main-container" class="main-container">
   <div class="cards">
     <% @instruments.each do |instrument| %>
-      <%# <% link_to instrument_path(instrument) do %> %>
+      <a href=<%="/instruments/#{instrument.id}"%>>
         <div class="card-instrument">
             <img src=<%=instrument.image_url%>/>
             <div class="card-instrument-infos">
@@ -16,7 +16,7 @@
               <h3 class="card-instrument-pricing"><%=instrument.daily_price%></h3>
             </div>
         </div>
-      <%# <% end %> %>
+      </a>
     <% end %>
   </div>
 </div>

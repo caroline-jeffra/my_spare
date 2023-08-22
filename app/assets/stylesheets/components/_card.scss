@@ -6,6 +6,11 @@
   padding: 1rem;
 }
 
+.cards > a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 .cards{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
