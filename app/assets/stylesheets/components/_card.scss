@@ -24,6 +24,11 @@
   padding: 1rem;
 }
 
+.card-instrument:hover  {
+  background: rgba(230, 230, 230, 0.1);
+  transition-delay:0.08s;
+}
+
 .card-instrument > img {
   height: 200px;
   width: 100%;
