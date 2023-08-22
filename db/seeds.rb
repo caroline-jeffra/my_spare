@@ -42,6 +42,7 @@ puts "Pythagoras had the first dream of what will be known as the monochord (cre
       model: Faker::Music.genre,
       brand: Faker::Ancient.god,
       category: "Guitar",
+      city: "Den Haag",
       daily_price: Faker::Number.decimal,
       description: Faker::Quotes::Shakespeare.hamlet_quote,
       image_url: "https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
