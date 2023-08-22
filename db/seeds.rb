@@ -53,3 +53,11 @@ end
 
 puts "Instruments created and tuned!"
 puts "All set!"
+
+puts "Generating bookings"
+20.times do
+  user = User.order("RANDOM()").limit(1).first
+  instrument = Instrument.order("RANDOM()").limit(1).first
+  Booking.create!(start_date: Date.today, end_date: (Date.today + rand(0..7)), user: user, instrument: instrument)
+end
+puts "Bookings created!"
