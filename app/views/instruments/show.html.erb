@@ -13,6 +13,9 @@
     <p>
       Description: <%= @instrument.description %>
     </p>
+    <p>
+      Distance from you: <%= @distance %> Km.
+    </p>
     <%= render 'booking_form', booking: @booking, instrument: @instrument %>
   </div>
 </div>

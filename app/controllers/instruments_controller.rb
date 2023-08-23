@@ -39,6 +39,13 @@ class InstrumentsController < ApplicationController
   def destroy
   end
 
+  def distance_from_user(instrument)
+    Geocoder::Calculations.distance_between(
+      [current_user.latitude, current_user.longitude],
+      [instrument.latitude, instrument.longitude]).round()
+    # Geocoder::Calculations.distance_between([lat1, lon1], [lat2, lon2]).round()
+  end
+
   private
 
   def set_instrument
@@ -62,9 +69,4 @@ class InstrumentsController < ApplicationController
   def search_params
     params.require(:instrument).permit(:model, :brand, :category)
   end
-end
-
-def distance_from_user(instrument)
-  Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [instrument.latitude, instrument.longitude]).round()
-  # Geocoder::Calculations.distance_between([lat1, lon1], [lat2, lon2]).round()
 end
