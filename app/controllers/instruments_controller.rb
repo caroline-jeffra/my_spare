@@ -9,6 +9,7 @@ class InstrumentsController < ApplicationController
   def show
     @user = User.find(@instrument.user_id)
     @booking = Booking.new
+    @distance = distance_from_user(@instrument)
   end
 
   def new
@@ -36,6 +37,13 @@ class InstrumentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def distance_from_user(instrument)
+    Geocoder::Calculations.distance_between(
+      [current_user.latitude, current_user.longitude],
+      [instrument.latitude, instrument.longitude]).round()
+    # Geocoder::Calculations.distance_between([lat1, lon1], [lat2, lon2]).round()
   end
 
   private

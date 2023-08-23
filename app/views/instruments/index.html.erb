@@ -13,6 +13,7 @@
                 <h2>Model: <%=instrument.model%></h2>
                 <p><%=instrument.category%></p>
                 <p><%=instrument.city%></p>
+                <p>Distance from you: <%=distance_from_user(instrument)%> Km</p>
               </div>
               <h3 class="card-instrument-pricing"><%=instrument.daily_price%></h3>
             </div>
