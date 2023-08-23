@@ -15,8 +15,10 @@ class BookingsController < ApplicationController
     @booking.cost = @instrument.daily_price * (@booking.end_date - @booking.start_date + 1)
     if @booking.save
       puts "#{@booking} has been created"
+      flash.alert = "Booking saved!"
     else
       puts 'booking failed'
+      flash.alert = "Booking failed"
     end
   end
 
