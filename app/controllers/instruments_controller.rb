@@ -1,11 +1,12 @@
 class InstrumentsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new edit]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_instrument, only: %i[show edit update destroy]
+
   def index
     @instruments = Instrument.all
   end
 
   def show
-    @instrument = Instrument.find(params[:id])
     @user = User.find(@instrument.user_id)
     @booking = Booking.new
   end
@@ -16,10 +17,10 @@ class InstrumentsController < ApplicationController
 
   def create
     @instrument = Instrument.new(instrument_params)
-    if @instrument.save!
+    if @instrument.save
       redirect_to instrument_path(@instrument)
     else
-      render :new_instrument, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -27,12 +28,21 @@ class InstrumentsController < ApplicationController
   end
 
   def update
+    if @instrument.update(instrument_params)
+      redirect_to instrument_path(@instrument)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
   end
 
   private
+
+  def set_instrument
+    @instrument = Instrument.find(params[:id])
+  end
 
   def instrument_params
     params.require(:instrument)
