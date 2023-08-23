@@ -13,7 +13,11 @@ class BookingsController < ApplicationController
     @booking.instrument = @instrument
     # TODO: make this cost calculation private so that it isn't vulnerable through exposure
     @booking.cost = @instrument.daily_price * (@booking.end_date - @booking.start_date + 1)
-    @booking.save
+    if @booking.save
+      puts "#{@booking} has been created"
+    else
+      puts 'booking failed'
+    end
   end
 
   private
