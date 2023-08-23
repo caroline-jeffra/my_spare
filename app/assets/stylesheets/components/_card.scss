@@ -1,0 +1,67 @@
+.main-container {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.cards > a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card-instrument {
+  overflow: hidden;
+  background: rgb(234, 234, 234);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 1rem;
+}
+
+.card-instrument:hover  {
+  background: rgb(255, 255, 255);
+  transition-delay:0.08s;
+  transform: translateY(-8px);
+  transition: transform 0.5s;
+  box-shadow: 0 0 18px rgba(0,0,0,0.5);
+}
+
+.card-instrument > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-instrument h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-instrument p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-instrument .card-instrument-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-instrument-infos .card-instrument-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}

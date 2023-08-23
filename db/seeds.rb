@@ -44,7 +44,7 @@ puts "Pythagoras had the first dream of what will be known as the monochord (cre
       brand: Faker::Ancient.god,
       category: "Guitar",
       city: "Den Haag",
-      daily_price: Faker::Number.decimal,
+      daily_price: rand(0..200),
       description: Faker::Quotes::Shakespeare.hamlet_quote,
       image_url: "https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       user_id: User.last.id
@@ -54,3 +54,14 @@ end
 
 puts "Instruments created and tuned!"
 puts "All set!"
+
+puts "Generating bookings"
+20.times do
+  user = User.order("RANDOM()").limit(1).first
+  instrument = Instrument.order("RANDOM()").limit(1).first
+  start_date = Date.today + rand(0..14)
+  end_date = start_date + rand(0..4)
+  booking = Booking.new(start_date: start_date, end_date: end_date, user: user, instrument: instrument)
+  booking.save! if booking.valid?
+end
+puts "Bookings created!"
