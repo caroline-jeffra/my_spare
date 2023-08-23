@@ -4,7 +4,7 @@
     <% @instruments.each do |instrument| %>
       <a href=<%="/instruments/#{instrument.id}"%>>
         <div class="card-instrument">
-            <img src=<%=instrument.image_url%>/>
+            <img src="<%=instrument.image_url%>"/>
             <div class="card-instrument-infos">
               <div>
                 <h3>Brand: <%=instrument.brand%></h3>
