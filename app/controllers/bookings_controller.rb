@@ -1,10 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   def destroy
-    puts 'booking deleted'
-    @booking = Booking.find(params[:id])
-    @booking.destroy
-    redirect_to instrument_path(@booking.instrument)
   end
 
   def create

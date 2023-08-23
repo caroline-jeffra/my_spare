@@ -20,9 +20,10 @@
     <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
     </div>
   </div>
+    <p>
+      Distance from you: <%= @distance %> Km.
+    </p>
+    <%= render 'booking_form', booking: @booking, instrument: @instrument %>
   </div>
-  <%= link_to 'Delete Booking',
-    instrument_bookings_path(@instrument, @booking), html_options = {
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
 </div>
 <%= render 'layouts/booking_inspect', instrument: @instrument, booking: @instrument_bookings.last %>

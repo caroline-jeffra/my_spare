@@ -2,6 +2,7 @@ require 'json'
 class InstrumentsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_instrument, only: %i[show edit update destroy]
+  helper_method :distance_from_user
 
   def index
     @instruments = Instrument.all
@@ -11,6 +12,7 @@ class InstrumentsController < ApplicationController
     @user = User.find(@instrument.user_id)
     @instrument_bookings = booked_dates(@instrument.bookings)
     @booking = Booking.new
+    @distance = distance_from_user(@instrument)
   end
 
   def new
@@ -38,6 +40,13 @@ class InstrumentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def distance_from_user(instrument)
+    Geocoder::Calculations.distance_between(
+      [current_user.latitude, current_user.longitude],
+      [instrument.latitude, instrument.longitude]
+    ).round
   end
 
   private
