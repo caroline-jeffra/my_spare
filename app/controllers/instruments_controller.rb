@@ -4,7 +4,8 @@ class InstrumentsController < ApplicationController
   helper_method :distance_from_user
 
   def index
-    @instruments = Instrument.all
+    @instruments = Instrument.where(search_params)
+    # raise
   end
 
   def show
@@ -68,6 +69,7 @@ class InstrumentsController < ApplicationController
 
   # for future use
   def search_params
-    params.require(:instrument).permit(:model, :brand, :category)
+    # raise
+    params.require(:instrument).compact_blank.permit(:model, :brand, :category, :city) if params[:instrument].present?
   end
 end
