@@ -7,10 +7,6 @@ class BookingsController < ApplicationController
     redirect_to instrument_path(@booking.instrument)
   end
 
-  # @bookmark = Bookmark.find(params[:id])
-  # @bookmark.destroy
-  # redirect_to list_bookmarks_path, status: :see_other
-
   def create
     @instrument = Instrument.find(params[:instrument_id])
     @booking = Booking.new(booking_params)
