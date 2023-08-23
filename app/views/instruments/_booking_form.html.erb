@@ -1,7 +1,7 @@
 <%= simple_form_for [instrument, booking] do |f| %>
   <div class="form-inputs">
-  <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-  <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :start_date, as: :string,
+  input_html: { data: { controller: "datepicker", mode: "range", dateFormat: "Y-m-d" },  disable: instrument_bookings } %>
   </div>
   <div class="form-actions">
   <%= f.button :submit %>

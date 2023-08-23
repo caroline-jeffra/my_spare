@@ -7,6 +7,7 @@
     <h2>
       <%= @instrument.model %>, <%= @instrument.brand %>
     </h2>
+    <p><%= @instrument_bookings %></p>
     <h3>
       Located in <%= @instrument.city %> for <%= @instrument.daily_price %> per day.
     </h3>
@@ -16,6 +17,13 @@
     <p>
       Distance from you: <%= @distance %> Km.
     </p>
-    <%= render 'booking_form', booking: @booking, instrument: @instrument %>
+    <div data-controller="toggle" class="mt-5">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book me!</button>
+    <div data-toggle-target="togglableElement" class="d-none">
+    <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
+    </div>
+  </div>
+    <%# <%= render 'booking_form', booking: @booking, instrument: @instrument %>
   </div>
 </div>
+<%# <%= render 'layouts/booking_inspect', instrument: @instrument, booking: @instrument_bookings.last %>

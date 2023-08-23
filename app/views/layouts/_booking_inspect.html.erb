@@ -1,0 +1,4 @@
+<%= booking %>
+<%= link_to 'Delete Booking',
+  booking_path(booking), html_options = {
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete booking #{booking}"} } %>
