@@ -10,11 +10,9 @@ class BookingsController < ApplicationController
     # TODO: make this cost calculation private so that it isn't vulnerable through exposure
     @booking.cost = @instrument.daily_price * (@booking.end_date - @booking.start_date + 1)
     if @booking.save
-      puts "#{@booking} has been created"
-      flash.alert = "Booking saved!"
+      redirect_to instrument_path(@instrument), notice: "Booking successful!"
     else
-      puts 'booking failed'
-      flash.alert = "Booking failed"
+      redirect_to instrument_path(@instrument), notice: "Booking failed!"
     end
   end
 

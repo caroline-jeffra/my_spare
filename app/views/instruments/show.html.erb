@@ -14,16 +14,16 @@
     <p>
       Description: <%= @instrument.description %>
     </p>
+    <p>
+      Distance from you: <%= @distance %> Km.
+    </p>
     <div data-controller="toggle" class="mt-5">
     <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book me!</button>
     <div data-toggle-target="togglableElement" class="d-none">
     <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
     </div>
   </div>
-    <p>
-      Distance from you: <%= @distance %> Km.
-    </p>
-    <%= render 'booking_form', booking: @booking, instrument: @instrument %>
+    <%# <%= render 'booking_form', booking: @booking, instrument: @instrument %>
   </div>
 </div>
-<%= render 'layouts/booking_inspect', instrument: @instrument, booking: @instrument_bookings.last %>
+<%# <%= render 'layouts/booking_inspect', instrument: @instrument, booking: @instrument_bookings.last %>
