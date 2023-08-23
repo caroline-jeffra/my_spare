@@ -1,0 +1,7 @@
+<%= simple_form_for Instrument.new, url: { action: :index }, method: :get do |f| %>
+  <%= f.input :model %>
+  <%= f.input :brand %>
+  <%= f.input :category, required: false %>
+  <%= f.input :city, required: false %>
+  <%= f.submit "Search" %>
+<% end %>
