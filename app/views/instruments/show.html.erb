@@ -25,3 +25,4 @@
     instrument_bookings_path(@instrument, @booking), html_options = {
       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
 </div>
+<%= render 'layouts/booking_inspect', instrument: @instrument, booking: @instrument_bookings.last %>
