@@ -23,6 +23,15 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date).merge(user: current_user)
+    book_start = Date.parse(params["booking"]['start_date'].split(' ').first)
+    book_end = Date.parse(params["booking"]['start_date'].split(' ').last)
+    params
+      .require(:booking)
+      .permit(:start_date, :end_date)
+      .merge(
+        user: current_user,
+        start_date: book_start,
+        end_date: book_end
+      )
   end
 end

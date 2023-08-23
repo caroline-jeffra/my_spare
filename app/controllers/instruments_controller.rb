@@ -1,3 +1,4 @@
+require 'json'
 class InstrumentsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_instrument, only: %i[show edit update destroy]
@@ -8,6 +9,7 @@ class InstrumentsController < ApplicationController
 
   def show
     @user = User.find(@instrument.user_id)
+    @instrument_bookings = booked_dates(@instrument.bookings)
     @booking = Booking.new
   end
 
@@ -39,6 +41,14 @@ class InstrumentsController < ApplicationController
   end
 
   private
+
+  def booked_dates(bookings)
+    booked_dates = []
+    bookings.each do |booking|
+      booked_dates.push({ from: booking.start_date.to_s, to: booking.end_date.to_s })
+    end
+    return booked_dates.to_json
+  end
 
   def set_instrument
     @instrument = Instrument.find(params[:id])
