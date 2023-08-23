@@ -1,1 +1,57 @@
-<h1>Dashboar. Show</h1>
+<h1>Hi <%= current_user.first_name %>, this is your Dashboard</h1>
+
+<%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }  %>
+
+<h2>Your instruments</h2>
+<div>
+  <% if @instruments.empty? %>
+    <p>You don't have any instruments</p>
+  <% end %>
+  <% @instruments.each do |instrument| %>
+
+    <p><%= instrument.brand %> - owned by <%= instrument.user.first_name %></p>
+
+    <div class="d-flex align-contents-center">
+      <div class="col-5">
+        <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
+      </div>
+      <div class="col-5">
+        <h2>
+          <%= instrument.model %>, <%= instrument.brand %>
+        </h2>
+        <h3>
+          Located in <%= instrument.city %> for <%= instrument.daily_price %> per day.
+        </h3>
+        <p>
+          Description: <%= instrument.description %>
+        </p>
+
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h2>Bookings of your instruments</h2>
+
+<% @instruments.each do |instrument| %>
+
+  <p><%= instrument.category %>-<%= instrument.id %> (model: <%= instrument.model %>)</p>
+  <ul>
+    <% instrument.bookings.each do |booking| %>
+      <li>Booked by <%= booking.user.first_name %> (<%= booking.user.email %>)</li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<h2>Your bookings of other people's instruments</h2>
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <li class="my-5">
+      <p>You've booked <%= booking.instrument.category %>-<%= booking.instrument.id %></p>
+      <p>The instrument is owned by: <%= booking.instrument.user.first_name %></p>
+      <p>You are renting this instrument from <%= booking.start_date %> until <%= booking.end_date %></p>
+    </li>
+  <% end %>
+</ul>
