@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div id="main-container" class="main-container">
+  <div class="cards">
+    <% @instruments.each do |instrument| %>
+      <a href=<%="/instruments/#{instrument.id}"%>>
+        <div class="card-instrument">
+            <img src=<%=instrument.image_url%>/>
+            <div class="card-instrument-infos">
+              <div>
+                <h3>Brand: <%=instrument.brand%></h3>
+                <h2>Model: <%=instrument.model%></h2>
+                <p><%=instrument.category%></p>
+                <p><%=instrument.city%></p>
+              </div>
+              <h3 class="card-instrument-pricing"><%=instrument.daily_price%></h3>
+            </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>
