@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
     # TODO: make this cost calculation private so that it isn't vulnerable through exposure
     @booking.cost = @instrument.daily_price * (@booking.end_date - @booking.start_date + 1)
     @booking.save
-    raise
   end
 
   private
