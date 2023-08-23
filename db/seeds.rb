@@ -3,6 +3,9 @@ Booking.destroy_all
 Instrument.destroy_all
 User.destroy_all
 
+
+CITIES = ["Amsterdan", "Den Haag", "Utrecht", "Leiden", "Rotterdam"]
+
 puts "Introducing music to humankind (creating users)"
 # The default user password is "password". For different passwords use: Faker::Internet.password
 
@@ -13,29 +16,29 @@ User.new(
   password: "password",
   first_name: "Admin",
   last_name: "Admin",
-  city: "Adminville"
+  city: CITIES.sample
 ).save
 
 # The following are normal users:
-7.times do
+7.times do |i|
   User.new(
-    email: Faker::Internet.email,
+    email: "user#{i}@email.com",
     password: "password",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    city: Faker::Address.city
+    city: CITIES.sample
   ).save
 end
 
 puts "Pythagoras had the first dream of what will be known as the monochord (creating instruments and their owners)"
 
-5.times do
+5.times do |i|
   User.new(
-    email: Faker::Internet.email,
+    email: "owner#{i}@email.com",
     password: "password",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    city: "Amsterdam"
+    city: CITIES.sample
   ).save!
 
   2.times do
@@ -43,7 +46,7 @@ puts "Pythagoras had the first dream of what will be known as the monochord (cre
       model: Faker::Music.genre,
       brand: Faker::Ancient.god,
       category: "Guitar",
-      city: "Den Haag",
+      city: CITIES.sample,
       daily_price: rand(0..200),
       description: Faker::Quotes::Shakespeare.hamlet_quote,
       image_url: "https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
