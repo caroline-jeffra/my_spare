@@ -5,5 +5,21 @@
 <div>
   <% @instruments.each do |instrument| %>
     <p><%= instrument.brand %> - owned by <%= instrument.user.first_name %></p>
+     <div class="d-flex align-contents-center">
+      <div class="col-5">
+        <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
+      </div>
+      <div class="col-5">
+        <h2>
+          <%= instrument.model %>, <%= instrument.brand %>
+        </h2>
+        <h3>
+          Located in <%= instrument.city %> for <%= instrument.daily_price %> per day.
+        </h3>
+        <p>
+          Description: <%= instrument.description %>
+        </p>
+      </div>
+</div>
   <% end %>
 </div>
