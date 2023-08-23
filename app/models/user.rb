@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :instruments
 
   validates :first_name, :last_name, :city, presence: true
+
+  geocoded_by :city
+  after_validation :geocode, if: :will_save_change_to_address?
 end
