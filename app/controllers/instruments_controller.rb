@@ -15,6 +15,9 @@ class InstrumentsController < ApplicationController
       @end_date = Date.parse(params[:dates].split(" to ").last)
       @instruments = Instrument.where.not(id: Booking.unavailable(@start_date, @end_date).pluck(:instrument_id))
     end
+    if params[:distance].present? && params[:distance].to_i != 100 && current_user.present?
+      @instruments = @instruments.near([current_user.latitude, current_user.longitude], params[:distance], units: :km)
+    end
   end
 
   def show

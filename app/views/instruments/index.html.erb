@@ -1,8 +1,8 @@
 <h1>Instruments</h1>
 
-<%= render 'search_form' %>
 
 <div id="main-container" class="main-container">
+  <%= render 'search_form' %>
   <div class="cards-grid">
     <% @instruments.each do |instrument| %>
       <%= link_to instrument_path(instrument) do %>
