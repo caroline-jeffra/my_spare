@@ -10,6 +10,11 @@ class InstrumentsController < ApplicationController
     else
       @instruments = Instrument.all
     end
+    if params[:dates].present?
+      @start_date = Date.parse(params[:dates].split(" to ").first)
+      @end_date = Date.parse(params[:dates].split(" to ").last)
+      @instruments = Instrument.where.not(id: Booking.unavailable(@start_date, @end_date).pluck(:instrument_id))
+    end
   end
 
   def show
@@ -50,10 +55,17 @@ class InstrumentsController < ApplicationController
   end
 
   def distance_from_user(instrument)
-    Geocoder::Calculations.distance_between(
-      [current_user.latitude, current_user.longitude],
-      [instrument.latitude, instrument.longitude]
-    ).round
+    if current_user.nil?
+      Geocoder::Calculations.distance_between(
+        [User.last.latitude, User.last.longitude],
+        [instrument.latitude, instrument.longitude]
+      ).round
+    else
+      Geocoder::Calculations.distance_between(
+        [current_user.latitude, current_user.longitude],
+        [instrument.latitude, instrument.longitude]
+      ).round
+    end
   end
 
   private
