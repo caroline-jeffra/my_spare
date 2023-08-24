@@ -26,6 +26,8 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 1rem;
   height: 100%!important;
+  width: 100%!important;
+  position: relative
 }
 
 .card-instrument:hover  {
@@ -69,6 +71,14 @@
   top: -20px;
   width: 40px;
 }
+
+.card-instrument-pricing {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+
 @media(max-width: 992px) {
   .cards {
     grid-template-columns: 1fr 1fr;
