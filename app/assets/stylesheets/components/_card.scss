@@ -12,8 +12,8 @@
 
 .card-instrument {
   overflow: hidden;
-  background: rgb(234, 234, 234);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: $light-gray-b;
+  box-shadow: 0 0 15px $black-b-s;
   padding: 1rem;
   height: 368px;
   position: relative;
@@ -21,11 +21,11 @@
 }
 
 .card-instrument:hover  {
-  background: rgb(255, 255, 255);
+  background: $white;
   transition-delay:0.08s;
   transform: scale(1.05);
   transition: transform 0.5s;
-  box-shadow: 0 0 18px rgba(0,0,0,0.5);
+  box-shadow: 0 0 18px $black-b-s-h;
 }
 
 .card-instrument:hover .card-notice {
@@ -36,14 +36,14 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
-  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 3px $black-b-s;
 }
 
 .card-instrument-infos {
   padding: 10px;
   display: flex;
   justify-content: center;
-  text-shadow: 1px 1px #8e8e8ea8;
+  text-shadow: 1px 1px $gray-t-s;
 }
 
 .card-distance-owner {
@@ -63,14 +63,13 @@
 }
 .card-notice {
   position: absolute;
-  background: rgb(185, 0, 0);
+  background: $bordo;
   padding-right: 30px;
   padding-left: 30px;
   bottom: 40px;
   left: -50px;
   font-size: 14px;
-  font-size: 14px;
-  color: white;
+  color: $white;
   visibility: hidden;
   rotate: (45deg);
 }
