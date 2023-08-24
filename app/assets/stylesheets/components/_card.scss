@@ -9,15 +9,16 @@
   padding-right: 5rem;
 }
 
+.cards{
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 370px);
+  grid-gap: 16px;
+}
+
 .cards > a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
-}
-
-.cards{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
 }
 
 .card-instrument {
@@ -26,7 +27,6 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 1rem;
   height: 100%!important;
-  width: 100%!important;
   position: relative
 }
 
@@ -76,17 +76,4 @@
   position: absolute;
   bottom: 0px;
   right: 0px;
-}
-
-
-@media(max-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media(max-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
 }

@@ -10,13 +10,16 @@
           <%= image_tag(instrument.image_url) %>
           <div class="card-instrument-infos">
             <div>
-              <h3>Brand: <%=instrument.brand%></h3>
-              <h2>Model: <%=instrument.model%></h2>
-              <p><%=instrument.category%></p>
-              <p><%=instrument.city%></p>
-              <p>Distance from you: <%=distance_from_user(instrument)%> Km</p>
+              <h3><%=instrument.category%></h3>
             </div>
-            <div class="card-instrument-pricing"><h3>€ <%=instrument.daily_price%></h3></div>
+            <div>
+            <div>
+              <h2>Distance from you: <%=distance_from_user(instrument)%> Km</h2>
+            </div>
+            <div class="card-instrument-pricing">
+              <h3>€ <%=instrument.daily_price%></h3>
+            </div>
+            </div>
           </div>
         </div>
       <% end %>
