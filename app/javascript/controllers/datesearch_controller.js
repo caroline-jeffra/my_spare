@@ -5,29 +5,23 @@ export default class extends Controller {
   static targets = ['calendar']
 
   connect() {
-    flatpickr(this.calendarTarget, {
+    this.instance = flatpickr(this.calendarTarget, {
       minDate: "today"
     })
   }
 
   toggle() {
     if(this.calendarTarget.classList.contains("isOpen")) {
-      flatpickr(this.calendarTarget, {
-        minDate: "today"
-      }).close()
+      this.instance.close()
       this.calendarTarget.classList.remove("isOpen")
     } else {
-      flatpickr(this.calendarTarget, {
-        minDate: "today"
-      }).open()
+      this.instance.open()
       this.calendarTarget.classList.add("isOpen")
     }
   }
 
   clear() {
-    flatpickr(this.calendarTarget, {
-      minDate: "today"
-    }).clear()
+    this.instance.clear()
   }
 }
 
