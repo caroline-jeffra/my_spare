@@ -1,8 +1,10 @@
+# Sets Pexels client
+client = Pexels::Client.new
+
 puts "Cleaning database..."
 Booking.destroy_all
 Instrument.destroy_all
 User.destroy_all
-
 
 CITIES = ["Amsterdan", "Den Haag", "Utrecht", "Leiden", "Rotterdam"]
 
@@ -41,14 +43,15 @@ puts "Pythagoras had the first dream of what will be known as the monochord (cre
     city: CITIES.sample
   ).save!
   2.times do
+    random_instrument = Faker::Music.instrument
     Instrument.new(
       model: Faker::Music.genre,
       brand: Faker::Ancient.god,
-      category: "Guitar",
+      category: random_instrument,
       city: CITIES.sample,
       daily_price: rand(0..200),
       description: Faker::Quotes::Shakespeare.hamlet_quote,
-      image_url: "https://images.pexels.com/photos/45243/saxophone-music-gold-gloss-45243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image_url: client.photos.search(random_instrument).to_a.sample.src["medium"],
       user_id: User.last.id
     ).save!
   end

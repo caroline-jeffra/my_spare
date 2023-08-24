@@ -82,3 +82,5 @@ end
 gem "devise"
 gem "faker"
 gem "geocoder"
+
+gem "pexels"
