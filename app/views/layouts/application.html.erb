@@ -12,14 +12,10 @@
 
   <body>
     <nav>
-      <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+      <div class="navbar navbar-expand-sm navbar-light navbar-myspare">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
-            <i class="fa-solid fa-guitar"></i>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <div><h2>My Spare</h2></div>
+          <div><%= render 'search_form' %></div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item active">
@@ -35,10 +31,6 @@
     </nav>
     <div>
       <%= render "layouts/flashes" %>
-      <%= link_to "pages#home", root_path %>
-      <%= link_to "instruments#index", instruments_path %>
-      <%= link_to "instruments#new", new_instrument_path %>
-      <%= link_to "dashboards#show", dashboard_path %>
     </div>
     <%= yield %>
   </body>

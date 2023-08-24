@@ -1,13 +1,17 @@
-.navbar-lewagon {
+.navbar-myspare {
   justify-content: space-between;
-  background: $white;
+  background: $o-blue;
   color: $light-gray;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-myspare > h2 {
+padding-left: 1rem;
+}
+
+.navbar-myspare .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-myspare .navbar-brand img {
   width: 40px;
 }
