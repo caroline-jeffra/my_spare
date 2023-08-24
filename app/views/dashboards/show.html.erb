@@ -35,7 +35,6 @@
 
 <% @instruments.each do |instrument| %>
 
-  <p><%= instrument.category %>-<%= instrument.id %> (model: <%= instrument.model %>)</p>
   <ul>
     <% instrument.bookings.each do |booking| %>
       <li>Booked by <%= booking.user.first_name %> (<%= booking.user.email %>)</li>
@@ -52,6 +51,7 @@
       <p>You've booked <%= booking.instrument.category %>-<%= booking.instrument.id %></p>
       <p>The instrument is owned by: <%= booking.instrument.user.first_name %></p>
       <p>You are renting this instrument from <%= booking.start_date %> until <%= booking.end_date %></p>
+      <%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %>
     </li>
   <% end %>
 </ul>
