@@ -4,6 +4,12 @@ export default class extends Controller {
   static targets = [ "rangeInput", "rangeText" ]
 
   connect() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if(urlParams.get('distance') === null){
+      this.rangeInputTarget.value = 100
+    }
+
     this.fire();
   }
 

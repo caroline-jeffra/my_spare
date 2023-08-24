@@ -1,6 +1,6 @@
 <div class="p-4 border">
-  <%= form_with url: instruments_path, method: :get, data: { controller: "searchform" } do %>
-    <div class="d-flex align-items-center" data-controller="toggle">
+  <%= form_with url: instruments_path, method: :get, data: { controller: "searchform toggle" } do %>
+    <div class="d-flex align-items-center">
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
