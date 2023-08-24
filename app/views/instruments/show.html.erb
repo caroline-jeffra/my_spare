@@ -1,12 +1,13 @@
 <h1>A <%= @instrument.category %> offered by <%= @user.first_name %> <%= @user.last_name[0] %>.</h1>
-<div class="row justify-content-around">
-  <div class="col-5 justify-content-center">
+<div class="row justify-content-center">
+  <div class="col-5 justify-content-end">
     <%= image_tag @instrument.image_url, alt: "Image of #{@instrument.category}", height: 400 %>
   </div>
   <div class="col-5">
     <h2>
       <%= @instrument.model %>, <%= @instrument.brand %>
     </h2>
+    <h2>This is my instrument <%= @my_instrument %></h2>
     <h3>
       Located in <%= @instrument.city %> for <%= @instrument.daily_price.to_i %> € per day.
     </h3>
@@ -18,9 +19,8 @@
     </p>
     <div data-controller="toggle" class="mt-5">
       <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book me!</button>
-    </div>
-    <div data-toggle-target="togglableElement" class="d-none">
-      <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
-    </div>
+      <div data-toggle-target="togglableElement" class="d-none">
+        <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
+      </div>
   </div>
 </div>
