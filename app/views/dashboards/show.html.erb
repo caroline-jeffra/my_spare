@@ -38,6 +38,8 @@
   <ul>
     <% instrument.bookings.each do |booking| %>
       <li>Booked by <%= booking.user.first_name %> (<%= booking.user.email %>)</li>
+      <%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %>
+
     <% end %>
   </ul>
 <% end %>
