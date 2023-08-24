@@ -3,7 +3,10 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 1rem;
-  padding: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .cards > a, a:hover, a:focus, a:active {
@@ -22,6 +25,7 @@
   background: rgb(234, 234, 234);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 1rem;
+  height: 100%!important;
 }
 
 .card-instrument:hover  {
@@ -64,4 +68,15 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+@media(max-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
