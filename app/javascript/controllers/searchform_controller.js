@@ -9,9 +9,9 @@ export default class extends Controller {
 
   fire() {
     if(this.rangeInputTarget.value == 100) {
-      this.rangeTextTarget.innerHTML = "∞km"
+      this.rangeTextTarget.innerHTML = "∞ km"
     } else {
-      this.rangeTextTarget.innerHTML = this.rangeInputTarget.value.concat("km")
+      this.rangeTextTarget.innerHTML = this.rangeInputTarget.value.concat(" km")
     }
 
   }
