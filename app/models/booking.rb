@@ -26,6 +26,17 @@ class Booking < ApplicationRecord
     )", start_date: new_booking_start_date, end_date: new_booking_end_date, instrument_id: new_booking_instrument_id
   end
 
+  def self.unavailable(new_booking_start_date, new_booking_end_date)
+    where "
+    (
+      start_date <= :start_date AND
+      end_date >= :start_date
+    ) OR (
+      start_date <= :end_date AND
+      end_date >= :end_date
+    )", start_date: new_booking_start_date, end_date: new_booking_end_date
+  end
+
   private
 
   def no_booking_overlap

@@ -1,7 +1,13 @@
-<%= simple_form_for Instrument.new, url: { action: :index }, method: :get do |f| %>
-  <%= f.input :model %>
-  <%= f.input :brand %>
-  <%= f.input :category, required: false %>
-  <%= f.input :city, required: false %>
-  <%= f.submit "Search" %>
+<%= form_with url: instruments_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for an instrument"
+  %>
+  <%= text_field_tag :dates,
+    params[:dates],
+    data: { controller: "datesearch", mode: "range" },
+    placeholder: "Pick some dates"
+  %>
+  <%= submit_tag "Search", name: "", class: "d-none" %>
 <% end %>

@@ -1,6 +1,14 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   def destroy
+    # find the booking to destroy from the params
+    @booking = Booking.find(params[:id])
+
+    # destroy the booking
+    @booking.destroy
+
+    # direct the user to the dashboard show
+    redirect_to dashboard_path
   end
 
   def create

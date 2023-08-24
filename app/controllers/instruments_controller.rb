@@ -5,8 +5,16 @@ class InstrumentsController < ApplicationController
   helper_method :distance_from_user
 
   def index
-    @instruments = Instrument.where(search_params)
-    # raise
+    if params[:query].present?
+      @instruments = Instrument.search(params[:query])
+    else
+      @instruments = Instrument.all
+    end
+    if params[:dates].present?
+      @start_date = Date.parse(params[:dates].split(" to ").first)
+      @end_date = Date.parse(params[:dates].split(" to ").last)
+      @instruments = Instrument.where.not(id: Booking.unavailable(@start_date, @end_date).pluck(:instrument_id))
+    end
   end
 
   def show
@@ -44,10 +52,17 @@ class InstrumentsController < ApplicationController
   end
 
   def distance_from_user(instrument)
-    Geocoder::Calculations.distance_between(
-      [current_user.latitude, current_user.longitude],
-      [instrument.latitude, instrument.longitude]
-    ).round
+    if current_user.nil?
+      Geocoder::Calculations.distance_between(
+        [User.last.latitude, User.last.longitude],
+        [instrument.latitude, instrument.longitude]
+      ).round
+    else
+      Geocoder::Calculations.distance_between(
+        [current_user.latitude, current_user.longitude],
+        [instrument.latitude, instrument.longitude]
+      ).round
+    end
   end
 
   private
@@ -75,11 +90,5 @@ class InstrumentsController < ApplicationController
             :image_url,
             :city
           ).merge(user: current_user)
-  end
-
-  # for future use
-  def search_params
-    # raise
-    params.require(:instrument).compact_blank.permit(:model, :brand, :category, :city) if params[:instrument].present?
   end
 end
