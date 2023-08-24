@@ -1,22 +1,11 @@
-.main-container {
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
-.cards{
+.cards-grid{
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 400px);
-  grid-gap: 16px;
+  grid-gap: 18px;
 }
 
-.cards > a, a:hover, a:focus, a:active {
+.cards-grid > a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
 }
@@ -26,54 +15,59 @@
   background: rgb(234, 234, 234);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 1rem;
-  height: 100%!important;
-  position: relative
+  height: 368px;
+  position: relative;
+  transition: all .2s ease-in-out;
 }
 
 .card-instrument:hover  {
   background: rgb(255, 255, 255);
   transition-delay:0.08s;
-  transform: translateY(-8px);
+  transform: scale(1.05);
   transition: transform 0.5s;
   box-shadow: 0 0 18px rgba(0,0,0,0.5);
+}
+
+.card-instrument:hover .card-notice {
+  visibility: visible;
 }
 
 .card-instrument > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
 }
 
-.card-instrument h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-instrument p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-
-.card-instrument .card-instrument-infos {
-  padding: 16px;
+.card-instrument-infos {
+  padding: 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  justify-content: center;
+  text-shadow: 1px 1px #8e8e8ea8;
 }
 
-.card-instrument-infos .card-instrument-user {
+.card-distance > p {
+  text-shadow: none;
+}
+
+.card-price {
   position: absolute;
+  padding: 3px;
+  bottom: 16px;
   right: 16px;
-  top: -20px;
-  width: 40px;
+  opacity: 0.7;
+}
+.card-notice {
+  position: absolute;
+  padding: 3px;
+  bottom: 18px;
+  left: 16px;
+  color: red;
+  visibility: hidden;
 }
 
-.card-instrument-pricing {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
+@media(max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }

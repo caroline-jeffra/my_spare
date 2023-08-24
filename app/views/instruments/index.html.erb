@@ -3,22 +3,21 @@
 <%= render 'search_form' %>
 
 <div id="main-container" class="main-container">
-  <div class="cards">
+  <div class="cards-grid">
     <% @instruments.each do |instrument| %>
       <%= link_to instrument_path(instrument) do %>
         <div class="card-instrument">
-          <%= image_tag(instrument.image_url) %>
+          <%= image_tag(instrument.image_url, alt: instrument.category) %>
           <div class="card-instrument-infos">
-            <div>
-              <h3><%=instrument.category%></h3>
+            <div class="card-distance">
+              <h3>Distance: <%=distance_from_user(instrument)%> Km</h3>
+              <p><%=instrument.category%> from <%instrument.user.first_name%></p>
             </div>
-            <div>
-            <div>
-              <h2>Distance from you: <%=distance_from_user(instrument)%> Km</h2>
+            <div class="card-notice">
+              <h4> Check this out!</h4>
             </div>
-            <div class="card-instrument-pricing">
+            <div class="card-price">
               <h3>€ <%=instrument.daily_price%></h3>
-            </div>
             </div>
           </div>
         </div>
