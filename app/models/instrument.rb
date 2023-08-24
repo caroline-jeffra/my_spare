@@ -1,7 +1,6 @@
 class Instrument < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
-  has_many :bookings
 
   include PgSearch::Model
   pg_search_scope :search,
