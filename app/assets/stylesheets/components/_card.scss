@@ -46,7 +46,11 @@
   text-shadow: 1px 1px #8e8e8ea8;
 }
 
-.card-distance > p {
+.card-distance-owner {
+  text-align: center;
+}
+
+.card-distance-owner > p {
   text-shadow: none;
 }
 
@@ -59,11 +63,16 @@
 }
 .card-notice {
   position: absolute;
-  padding: 3px;
-  bottom: 18px;
-  left: 16px;
-  color: red;
+  background: rgb(185, 0, 0);
+  padding-right: 30px;
+  padding-left: 30px;
+  bottom: 40px;
+  left: -50px;
+  font-size: 14px;
+  font-size: 14px;
+  color: white;
   visibility: hidden;
+  rotate: (45deg);
 }
 
 @media(max-width: 768px) {
