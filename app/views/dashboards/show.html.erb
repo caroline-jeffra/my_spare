@@ -27,29 +27,27 @@
   </div>
 
   <h2>Bookings of your instruments</h2>
-
   <% @instruments.each do |instrument| %>
-
     <ul>
       <% instrument.bookings.each do |booking| %>
-        <li>Booked by <%= booking.user.first_name %> (<%= booking.user.email %>)</li>
-        <%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %>
-
+        <li class="card-instrument">
+          <p>Booked by <%= booking.user.first_name %> (<%= booking.user.email %>)</p>
+          <p>Dates: from <%= booking.start_date %> until <%= booking.end_date %></p>
+          <p>Income: <%= booking.cost.to_i %>€<span><%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %></span></p>
+        </li>
       <% end %>
     </ul>
   <% end %>
 
-
-  <h2>Your bookings of other people's instruments</h2>
-
-  <ul>
+  <h2>You have booked these instruments:</h2>
+  <div class="cards-grid">
     <% @bookings.each do |booking| %>
-      <li class="my-5">
-        <p>You've booked <%= booking.instrument.category %>-<%= booking.instrument.id %></p>
-        <p>The instrument is owned by: <%= booking.instrument.user.first_name %></p>
-        <p>You are renting this instrument from <%= booking.start_date %> until <%= booking.end_date %></p>
-        <%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %>
+      <li class="card-instrument">
+      <%= image_tag booking.instrument.image_url, alt: "Image of #{booking.instrument.category}", height: 400 %>
+        <p>Booking:<br> <strong><%= booking.instrument.user.first_name %>'s <%= booking.instrument.category %></strong></p>
+        <p>Dates: from <%= booking.start_date %> until <%= booking.end_date %></p>
+        <p>Total cost: <%= booking.cost.to_i %>€<span><%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %></span></p>
       </li>
     <% end %>
-  </ul>
+  </div>
 </div>
