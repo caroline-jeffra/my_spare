@@ -4,5 +4,10 @@
     class: "form-control",
     placeholder: "Search for an instrument"
   %>
+  <%= text_field_tag :dates,
+    params[:dates],
+    data: { controller: "datesearch", mode: "range" },
+    placeholder: "Pick some dates"
+  %>
   <%= submit_tag "Search", name: "", class: "d-none" %>
 <% end %>
