@@ -6,6 +6,8 @@ class InstrumentsController < ApplicationController
 
   def index
     @instruments = Instrument.where(search_params)
+
+    @instruments = Instrument.search(params[:query]) if params[:query].present?
     # raise
   end
 
