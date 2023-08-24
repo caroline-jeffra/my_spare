@@ -9,32 +9,21 @@
       <p>You don't have any instruments</p>
     <% end %>
     <%= link_to "Add a new instrument", new_instrument_path %>
-      <div class="cards-grid">
-        <% @instruments.each do |instrument| %>
-          <%= link_to instrument_path(instrument) do %>
-            <div class="card-instrument">
-
-                  <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
-
-              <div class="card-instrument-infos">
-                <p><%= instrument.brand %></p>
-                <div class="card-instrument-infos">
-                  <h2>
-                    <%= instrument.model %>, <%= instrument.brand %>
-                  </h2>
-                  <h3>
-                    Located in <%= instrument.city %> for <%= instrument.daily_price %> per day.
-                  </h3>
-                  <p>
-                    Description: <%= instrument.description %>
-                  </p>
-
-                </div>
+    <div class="cards-grid">
+      <% @instruments.each do |instrument| %>
+        <%= link_to instrument_path(instrument) do %>
+          <div class="card-instrument">
+            <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
+            <div class="d-flex align-items-center justify-content-center ">
+              <div class="text-center">
+                <h2><%= instrument.category %> <%= instrument.brand %></h2>
+                <h3><%= instrument.daily_price.to_i %> € per day</h3>
               </div>
             </div>
-          <% end %>
+          </div>
         <% end %>
-      </div>
+      <% end %>
+    </div>
   </div>
 
   <h2>Bookings of your instruments</h2>
