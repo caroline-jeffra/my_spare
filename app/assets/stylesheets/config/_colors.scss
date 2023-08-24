@@ -1,10 +1,30 @@
 // Define variables for your color scheme
 
-// For example:
+// Default of bootstrap:
 $red: #FD1015;
 $blue: #0D6EFD;
 $yellow: #FFC65A;
 $orange: #E67E22;
 $green: #1EDD88;
-$gray: #0E0000;
+$black: #0E0000;
 $light-gray: #F4F4F4;
+
+// Default of our app:
+
+// General:
+
+$o-red: #FD1015;
+$o-blue: #004ec3;
+$o-yellow: #FFC65A;
+$o-orange: #E67E22;
+$o-green: #1EDD88;
+$o-black: #0E0000;
+$o-light-gray: #F4F4F4;
+
+// Card:
+$white: rgb(255, 255, 255);
+$light-gray-b: rgb(234, 234, 234);
+$black-b-s: rgba(0,0,0,0.2);
+$black-b-s-h: rgba(0,0,0,0.5);
+$gray-t-s: #8e8e8ea8;
+$bordo: rgb(185, 0, 0);
