@@ -1,13 +1,29 @@
-<%= form_with url: instruments_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search for an instrument"
-  %>
-  <%= text_field_tag :dates,
-    params[:dates],
-    data: { controller: "datesearch", mode: "range" },
-    placeholder: "Pick some dates"
-  %>
-  <%= submit_tag "Search", name: "", class: "d-none" %>
+<div class="p-4 border">
+  <%= form_with url: instruments_path, method: :get, data: { controller: "searchform" } do %>
+    <div data-controller="toggle">
+      <div class="d-flex">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search for an instrument" %>
+        <%= text_field_tag :dates,
+          params[:dates],
+          data: { controller: "datesearch", mode: "range" },
+          placeholder: "Pick some dates" %>
+        <div class="btn" data-action="click->toggle#fire">
+          x
+        </div>
+      </div>
+      <div class="d-flex border p-2 mt-4 d-none" data-toggle-target="togglableElement">
+        <p>Maximum Distance:</p>
+        <%= range_field_tag :distance,
+          params[:distance],
+          class: "form-range px-2",
+          data: { action: "change->searchform#fire", searchform_target: "rangeInput" }
+        %>
+      <p data-searchform-target="rangeText"></p>
+      </div>
+      <%= submit_tag "Search", name: "", class: "d-none" %>
+    </div>
 <% end %>
+</div>
