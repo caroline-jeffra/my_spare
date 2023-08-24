@@ -52,6 +52,8 @@ class InstrumentsController < ApplicationController
   end
 
   def destroy
+    @instrument.destroy
+    redirect_to dashboard_path, notice: "Instrument deleted."
   end
 
   def distance_from_user(instrument)
