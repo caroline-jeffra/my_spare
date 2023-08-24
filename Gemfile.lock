@@ -164,6 +164,8 @@ GEM
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pexels (0.5.0)
+      requests (~> 1.0.2)
     pg (1.5.3)
     pg_search (2.3.6)
       activerecord (>= 5.2)
@@ -208,6 +210,7 @@ GEM
     regexp_parser (2.8.1)
     reline (0.3.8)
       io-console (~> 0.5)
+    requests (1.0.2)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -281,6 +284,7 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
+  pexels
   pg (~> 1.1)
   pg_search
   puma (~> 5.0)
