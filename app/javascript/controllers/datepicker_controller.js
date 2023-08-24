@@ -7,7 +7,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.bookingsValue)
     flatpickr(this.element, {
       dateFormat: "Y-m-d",
       disable: this.bookingsValue

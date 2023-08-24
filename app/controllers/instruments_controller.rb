@@ -22,6 +22,9 @@ class InstrumentsController < ApplicationController
     @instrument_bookings = booked_dates(@instrument.bookings)
     @booking = Booking.new
     @distance = distance_from_user(@instrument)
+    # 1. test whether logged in user == instrument.user
+    @my_instrument = (@user == current_user)
+    # 2. if true, render buttons for edit and destroy
   end
 
   def new
@@ -49,6 +52,8 @@ class InstrumentsController < ApplicationController
   end
 
   def destroy
+    @instrument.destroy
+    redirect_to dashboard_path, notice: "Instrument deleted."
   end
 
   def distance_from_user(instrument)
