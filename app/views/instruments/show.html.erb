@@ -4,15 +4,9 @@
     <%= image_tag @instrument.image_url, alt: "Image of #{@instrument.category}", height: 400 %>
   </div>
   <div class="col-5">
-    <h2>
-      <%= @instrument.model %>, <%= @instrument.brand %>
-    </h2>
-    <h3>
-      Located in <%= @instrument.city %> for <%= @instrument.daily_price.to_i %> € per day.
-    </h3>
-    <p>
-      Description: <%= @instrument.description %>
-    </p>
+    <h2><%= @instrument.model %>, <%= @instrument.brand %></h2>
+    <h3>Located in <%= @instrument.city %> for <%= @instrument.daily_price.to_i %> € per day.</h3>
+    <p>Description: <%= @instrument.description %></p>
     <% if @my_instrument %>
       <%= link_to 'Edit Instrument', edit_instrument_path(@instrument) %>
       <%= link_to 'Delete Instrument',
@@ -25,13 +19,10 @@
         </div>
       </div>
     <% else %>
-      <p>
-        Distance from you: <%= @distance %> km
-      </p>
+      <p>Distance from you: <%= @distance %> km</p>
       <div data-controller="toggle" class="mt-5">
       <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book me!</button>
-      <div data-toggle-target="togglableElement" class="d-none">
-        <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
+      <div data-toggle-target="togglableElement" class="d-none"><%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
       </div>
       </div>
     <% end %>
