@@ -5,10 +5,11 @@ class InstrumentsController < ApplicationController
   helper_method :distance_from_user
 
   def index
-    @instruments = Instrument.where(search_params)
-
-    @instruments = Instrument.search(params[:query]) if params[:query].present?
-    # raise
+    if params[:query].present?
+      @instruments = Instrument.search(params[:query])
+    else
+      @instruments = Instrument.all
+    end
   end
 
   def show
@@ -77,11 +78,5 @@ class InstrumentsController < ApplicationController
             :image_url,
             :city
           ).merge(user: current_user)
-  end
-
-  # for future use
-  def search_params
-    # raise
-    params.require(:instrument).compact_blank.permit(:model, :brand, :category, :city) if params[:instrument].present?
   end
 end
