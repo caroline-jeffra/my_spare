@@ -7,20 +7,32 @@
     <h2>
       <%= @instrument.model %>, <%= @instrument.brand %>
     </h2>
-    <h2>This is my instrument <%= @my_instrument %></h2>
     <h3>
       Located in <%= @instrument.city %> for <%= @instrument.daily_price.to_i %> € per day.
     </h3>
     <p>
       Description: <%= @instrument.description %>
     </p>
-    <p>
-      Distance from you: <%= @distance %> km
-    </p>
-    <div data-controller="toggle" class="mt-5">
+    <% if @my_instrument %>
+      <%= link_to 'Edit Instrument', edit_instrument_path(@instrument) %>
+      <%= link_to 'Delete Instrument',
+        instrument_path(@instrument), html_options = {
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this #{@instrument.category}?"} } %>
+      <div data-controller="toggle" class="mt-5">
+        <button data-action="click->toggle#fire" class="btn btn-outline-primary">Schedule Unavailability</button>
+        <div data-toggle-target="togglableElement" class="d-none">
+          <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
+        </div>
+      </div>
+    <% else %>
+      <p>
+        Distance from you: <%= @distance %> km
+      </p>
+      <div data-controller="toggle" class="mt-5">
       <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book me!</button>
       <div data-toggle-target="togglableElement" class="d-none">
         <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
       </div>
-  </div>
+      </div>
+    <% end %>
 </div>
