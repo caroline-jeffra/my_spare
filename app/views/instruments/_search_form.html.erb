@@ -1,13 +1,37 @@
-<%= form_with url: instruments_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search for an instrument"
-  %>
-  <%= text_field_tag :dates,
-    params[:dates],
-    data: { controller: "datesearch", mode: "range" },
-    placeholder: "Pick some dates"
-  %>
-  <%= submit_tag "Search", name: "", class: "d-none" %>
-<% end %>
+<div class="p-4 border">
+  <%= form_with url: instruments_path, method: :get, data: { controller: "searchform toggle" } do %>
+    <div class="d-flex align-items-center">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for an instrument" %>
+      <div class="flatpickr flex-shrink-0" style="margin-left: 8px;" data-controller="datesearch">
+        <%= text_field_tag :dates,
+          params[:dates],
+          data: { datesearch_target: "calendar", mode: "range", input: true },
+          placeholder: "Select Dates..." %>
+        <a class="input-button" title="toggle" style="text-decoration: none">
+          <i class="fa-regular fa-calendar" style="color: $o-black;" data-action="click->datesearch#toggle"></i>
+        </a>
+        <a class="input-button" title="clear" style="text-decoration: none">
+          <i class="fa-regular fa-calendar-xmark" data-action="click->datesearch#clear"></i>
+        </a>
+      </div>
+
+      <div class="btn" data-action="click->toggle#fire">
+        <i class="fa-solid fa-sliders" style="color: $o-black;"></i>
+      </div>
+    </div>
+    <div class="d-flex border p-2 mt-4 d-none" data-toggle-target="togglableElement">
+      <p class="flex-shrink-0">Maximum Distance:</p>
+      <%= range_field_tag :distance,
+        params[:distance],
+        class: "form-range px-2",
+        style: { color: "$o-black" },
+        data: { action: "change->searchform#fire", searchform_target: "rangeInput" }
+      %>
+    <p class="flex-shrink-0" data-searchform-target="rangeText"></p>
+    <%= submit_tag "Search", name: "", class: "d-none" %>
+    </div>
+  <% end %>
+</div>
