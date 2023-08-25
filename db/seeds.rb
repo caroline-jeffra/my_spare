@@ -172,8 +172,8 @@ puts "making admin user"
 User.new(
   email: "admin@email.com",
   password: "password",
-  first_name: "Admin",
-  last_name: "Admin",
+  first_name: "Thiago",
+  last_name: "Souza",
   city: CITIES.sample
 ).save
 
