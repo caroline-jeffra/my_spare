@@ -1,29 +1,56 @@
-<h1>A <%= @instrument.category %> offered by <%= @user.first_name %> <%= @user.last_name[0] %>.</h1>
-<div class="row justify-content-center">
-  <div class="col-5 justify-content-end">
-    <%= image_tag @instrument.image_url, alt: "Image of #{@instrument.category}", height: 400 %>
+<div class="container d-flex m-10 p-5 flex-column border border-2 rounded">
+  <div class="row pb-3 align-content-center">
+    <h1><%= @instrument.category %> offered by <%= @user.first_name %> <%= @user.last_name[0] %>.</h1>
   </div>
-  <div class="col-5">
-    <h2><%= @instrument.model %>, <%= @instrument.brand %></h2>
-    <h3>Located in <%= @instrument.city %> for <%= @instrument.daily_price.to_i %> € per day.</h3>
-    <p>Description: <%= @instrument.description %></p>
-    <% if @my_instrument %>
-      <%= link_to 'Edit Instrument', edit_instrument_path(@instrument) %>
-      <%= link_to 'Delete Instrument',
-        instrument_path(@instrument), html_options = {
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this #{@instrument.category}?"} } %>
-      <div data-controller="toggle" class="mt-5">
-        <button data-action="click->toggle#fire" class="btn btn-outline-primary">Schedule Unavailability</button>
-        <div data-toggle-target="togglableElement" class="d-none">
-          <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
+
+  <div class="row justify-content-between align-content-center">
+    <div class="w-50 p-2" style="background-image: url('<%= image_path @instrument.image_url%>'); background-size: contain; background-repeat: no-repeat;"></div>
+
+    <div class="col-6 px-5">
+      <% if @instrument.model != '' %>
+        <h2><%= @instrument.model %>, <%= @instrument.brand %></h2>
+      <% end %>
+
+      <div class="d-flex">
+        <div class="align-self-center me-2">Located in </div>
+        <div style="font-size: 2rem;"> <%= @instrument.city %></div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <div class="align-self-center me-2">For </div>
+        <div style="font-size: 2rem;">€ <%= @instrument.daily_price.to_i %></div>
+        <div class="align-self-center ms-2">per day</div>
+      </div>
+
+      <% if !@my_instrument %>
+        <div class="d-flex">
+          <div style="font-size: 2rem;"><%= @distance %> km </div>
+          <div class="align-self-center ms-2"> from you</div>
         </div>
-      </div>
-    <% else %>
-      <p>Distance from you: <%= @distance %> km</p>
-      <div data-controller="toggle" class="mt-5">
-      <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book me!</button>
-      <div data-toggle-target="togglableElement" class="d-none"><%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
-      </div>
-      </div>
-    <% end %>
+      <% end %>
+
+      <p>Description: <%= @instrument.description %></p>
+
+      <% if @my_instrument %>
+        <%= link_to 'Edit Instrument', edit_instrument_path(@instrument) %>
+        <%= link_to 'Delete Instrument',
+          instrument_path(@instrument), html_options = {
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this #{@instrument.category}?"} } %>
+        <div data-controller="toggle" class="mt-5">
+          <button data-action="click->toggle#fire" class="btn btn-outline-primary">Schedule Unavailability</button>
+          <div data-toggle-target="togglableElement" class="d-none">
+            <%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
+          </div>
+        </div>
+      <% else %>
+        <div data-controller="toggle" class="mt-5">
+        <button data-action="click->toggle#fire" class="btn btn-primary">Book me!</button>
+        <div data-toggle-target="togglableElement" class="d-none"><%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
+        </div>
+      <% end %>
+
+    </div>
+
+  </div>
+
 </div>
