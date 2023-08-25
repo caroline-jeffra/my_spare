@@ -1,74 +1,87 @@
 <div id="main-container" class="main-container">
-  <div class="flex-column">
-    <div class="d-flex justify-content-center">
-      <h1>Hi <%= current_user.first_name %>, this is your Dashboard</h1><br>
-    </div>
-    <div class="d-flex justify-content-center">
-      <p class="btn btn-primary">
-        <%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }  %>
-      </p>
+  <div class="my-4">
+    <div class="flex-column">
+      <div class="d-flex justify-content-center">
+        <h1>Hi <%= current_user.first_name %>, this is your Dashboard</h1><br>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p class="btn btn-outline-secondary nav-item">
+          <%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }  %>
+        </p>
+      </div>
     </div>
   </div>
 
-  <div class="d-flex align-items-center">
-    <h2>Your instruments</h2>
-    <%= link_to "Add a new instrument", new_instrument_path %>
-  </div>
-  <div>
-    <% if @instruments.empty? %>
-      <p>You don't have any instruments</p>
-    <% end %>
-    <div class="cards-grid">
-      <% @instruments.each do |instrument| %>
-        <%= link_to instrument_path(instrument) do %>
-          <div class="card-instrument">
-            <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
-            <div class="d-flex align-items-center justify-content-center ">
-              <div class="text-center">
-                <h2><%= instrument.category %> <%= instrument.brand %></h2>
-                <h3><%= instrument.daily_price.to_i %> € per day</h3>
+  <div class="my-4">
+    <div class="my-2">
+      <div class="d-flex align-items-center justify-content-between">
+        <h2>Your instruments</h2>
+        <p class="btn btn-outline-secondary nav-item"><%= link_to "Add a new instrument", new_instrument_path %></p>
+      </div>
+    </div>
+    <div>
+      <% if @instruments.empty? %>
+        <p>You don't have any instruments</p>
+      <% end %>
+      <div class="cards-grid">
+        <% @instruments.each do |instrument| %>
+          <%= link_to instrument_path(instrument) do %>
+            <div class="card-instrument">
+              <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
+              <div class="d-flex align-items-center justify-content-center ">
+                <div class="text-center">
+                  <h2><%= instrument.category %> <%= instrument.brand %></h2>
+                  <h3><%= instrument.daily_price.to_i %> € per day</h3>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
-  <h2>Bookings of your instruments</h2>
-  <div class="row">
-    <% @instruments.each do |instrument| %>
-      <% if instrument.bookings.length > 0 %>
-        <div class="d-flex align-items-center">
-          <div class="col-2">
-            <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", width: 200 %>
+  <div class="my-4">
+    <h2>Bookings of your instruments</h2>
+    <div class="row">
+      <% @instruments.each do |instrument| %>
+        <% if instrument.bookings.length > 0 %>
+          <div class="d-flex align-items-center">
+            <div class="col-2">
+              <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", width: 200 %>
+            </div>
+            <h3>Your <%= instrument.category %></h3>
           </div>
-          <h3>Your <%= instrument.category %></h3>
-        </div>
-      <% end %>
-      <ul class="cards-grid">
-        <% instrument.bookings.each do |booking| %>
-          <li class="card-instrument">
-            <p>Booked by <%= booking.user.first_name %></p>
-            <p>Contact email:  <%= booking.user.email %></p>
-            <p>Start <%= booking.start_date %></p>
-            <p>End <%= booking.end_date %></p>
-            <p>Income: <%= booking.cost.to_i %>€<span></p>
-            <p><%= link_to "Cancel this booking", booking_path(booking), data: { turbo_method: :delete } %></span></p>
-          </li>
         <% end %>
-      </ul>
-    <% end %>
+        <ul class="cards-grid">
+          <% instrument.bookings.each do |booking| %>
+            <li class="card-instrument">
+                <p>Booked by <%= booking.user.first_name %></p>
+                <p>Contact email:  <%= booking.user.email %></p>
+                <p>Start <%= booking.start_date %></p>
+                <p>End <%= booking.end_date %></p>
+                <p>Income: <%= booking.cost.to_i %>€<span></p>
+                <p class="btn btn-outline-secondary nav-item"><%= link_to "Cancel this booking", booking_path(booking), data: { turbo_method: :delete } %></span></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
-  <h2>You have booked these instruments:</h2>
-  <ul class="cards-grid">
-    <% @bookings.each do |booking| %>
-      <li class="card-instrument">
-        <%= image_tag booking.instrument.image_url, alt: "Image of #{booking.instrument.category}", height: 400 %>
-        <p>Booking:<br> <strong><%= booking.instrument.user.first_name %>'s <%= booking.instrument.category %></strong></p>
-        <p>Dates: from <%= booking.start_date %> until <%= booking.end_date %></p>
-        <p>Total cost: <%= booking.cost.to_i %>€<span><%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %></span></p>
-      </li>
-    <% end %>
-  </ul>
+  <div class="my-4">
+    <h2>You have booked these instruments:</h2>
+    <ul class="cards-grid">
+      <% @bookings.each do |booking| %>
+        <li class="card-instrument">
+          <%= image_tag booking.instrument.image_url, alt: "Image of #{booking.instrument.category}", height: 400 %>
+          <p>Booking:<br> <strong><%= booking.instrument.user.first_name %>'s <%= booking.instrument.category %></strong></p>
+          <p>Dates: from <%= booking.start_date %> until <%= booking.end_date %></p>
+          <div class="d-flex justify-space-between align-items-center">
+            <p>Total cost: <%= booking.cost.to_i %>€</p>
+            <p class="btn btn-outline-secondary nav-item"><%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
