@@ -18,6 +18,7 @@
   height: 368px;
   position: relative;
   transition: all .2s ease-in-out;
+  border-radius: 5px;
 }
 
 .card-instrument:hover  {
@@ -40,7 +41,7 @@
 }
 
 .card-instrument-infos {
-  padding: 10px;
+  padding: 22px;
   display: flex;
   justify-content: center;
   text-shadow: 1px 1px $gray-t-s;
@@ -63,11 +64,11 @@
 }
 .card-notice {
   position: absolute;
-  background: $bordo;
+  background: $o-blue;
   padding-right: 30px;
   padding-left: 30px;
-  bottom: 40px;
-  left: -50px;
+  bottom: 43px;
+  left: -51px;
   font-size: 14px;
   color: $white;
   visibility: hidden;
