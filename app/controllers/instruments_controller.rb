@@ -16,7 +16,7 @@ class InstrumentsController < ApplicationController
       @instruments = Instrument.available_between(@start_date, @end_date)
     end
     if params[:distance].present? && params[:distance].to_i != 100 && current_user.present?
-      @instruments = @instruments.near([current_user.latitude, current_user.longitude], params[:distance], units: :km)
+      @instruments = @instruments.near(user_coordinates, params[:distance], units: :km)
     end
   end
 
@@ -60,16 +60,9 @@ class InstrumentsController < ApplicationController
   end
 
   def distance_from_user(instrument)
-    if current_user.nil?
-      Geocoder::Calculations.distance_between(
-        [User.last.latitude, User.last.longitude],
-        [instrument.latitude, instrument.longitude]
-      ).round
-    else
-      Geocoder::Calculations.distance_between(
-        current_user.coordinates, instrument.coordinates
-      ).round
-    end
+    Geocoder::Calculations.distance_between(
+      user_coordinates, instrument.coordinates
+    ).round
   end
 
   private
