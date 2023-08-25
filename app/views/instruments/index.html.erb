@@ -10,8 +10,8 @@
           <%= image_tag(instrument.image_url, alt: instrument.category) %>
           <div class="card-instrument-infos">
             <div class="card-distance-owner">
-              <h3>Distance: <%=distance_from_user(instrument)%> Km</h3>
-              <p><%=instrument.category%> from <%=instrument.user.first_name%></p>
+              <h3><%=instrument.category%> from <%=instrument.user.first_name%></h3>
+              <p>Distance: <%=distance_from_user(instrument)%> Km</p>
             </div>
             <div class="card-notice">
               <h4> Check this out!</h4>
