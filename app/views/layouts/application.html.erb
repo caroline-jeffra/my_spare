@@ -14,7 +14,9 @@
     <nav>
       <div class="navbar navbar-expand-sm navbar-light navbar-myspare">
         <div class="container-fluid">
-          <div><h2>My Spare</h2></div>
+          <%= link_to root_path do %>
+            <div><h2 id="link_home">My Spare</h2></div>
+          <% end %>
           <div><%= render 'search_form' %></div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">

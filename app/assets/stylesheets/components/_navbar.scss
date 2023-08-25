@@ -2,10 +2,13 @@
   justify-content: space-between;
   background: $o-blue;
   color: $light-gray;
+
 }
 
-.navbar-myspare > h2 {
-padding-left: 1rem;
+#link_home {
+  padding-left: 1rem;
+  text-decoration: none;
+  color: $white;
 }
 
 .navbar-myspare .navbar-collapse {
