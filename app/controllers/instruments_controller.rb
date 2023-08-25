@@ -21,7 +21,6 @@ class InstrumentsController < ApplicationController
   end
 
   def show
-    raise
     @user = User.find(@instrument.user_id)
     @instrument_bookings = booked_dates(@instrument.bookings)
     @booking = Booking.new
