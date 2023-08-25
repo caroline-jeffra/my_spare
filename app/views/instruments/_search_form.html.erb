@@ -4,22 +4,24 @@
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Search for an instrument" %>
+        placeholder: "Search instruments..." %>
       <div class="flatpickr flex-shrink-0" style="margin-left: 8px;" data-controller="datesearch">
         <%= text_field_tag :dates,
           params[:dates],
           data: { datesearch_target: "calendar", mode: "range", input: true },
+          class: "py-1",
+          style: "text-indent: 8px;",
           placeholder: "Select Dates..." %>
-        <a class="input-button" title="toggle" style="text-decoration: none">
-          <i class="fa-regular fa-calendar" style="color: $o-black;" data-action="click->datesearch#toggle"></i>
-        </a>
-        <a class="input-button" title="clear" style="text-decoration: none">
+        <span class="btn input-button p-1" title="Toggle Calendar" style="color: #FFFFFF">
+          <i class="fa-regular fa-calendar" data-action="click->datesearch#toggle"></i>
+        </span>
+        <span class="btn input-button p-1" title="Clear Calendar" style="color: #FFFFFF">
           <i class="fa-regular fa-calendar-xmark" data-action="click->datesearch#clear"></i>
-        </a>
+        </span>
       </div>
 
-      <div class="btn" data-action="click->toggle#fire">
-        <i class="fa-solid fa-sliders" style="color: $o-black;"></i>
+      <div class="btn pt-2 pb-1" data-action="click->toggle#fire">
+        <i class="fa-solid fa-sliders" style="color: #FFFFFF;"></i>
       </div>
     </div>
     <div class="d-flex p-2 mt-4 d-none align-content-center" data-toggle-target="togglableElement">
