@@ -1,4 +1,4 @@
-<div class="container d-flex p-5 flex-column border border-2 rounded">
+<div class="container d-flex m-10 p-5 flex-column border border-2 rounded">
   <div class="row pb-3 align-content-center">
     <h1><%= @instrument.category %> offered by <%= @user.first_name %> <%= @user.last_name[0] %>.</h1>
   </div>
@@ -8,7 +8,7 @@
       <%= image_tag @instrument.image_url, alt: "Image of #{@instrument.category}" %>
     </div>
 
-    <div class="col-6 pe-10 me-10">
+    <div class="col-3 pe-10 me-10">
       <% if @instrument.model != '' %>
         <h2><%= @instrument.model %>, <%= @instrument.brand %></h2>
       <% end %>
