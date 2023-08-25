@@ -83,6 +83,6 @@ gem "devise"
 gem "faker"
 gem "geocoder"
 
-gem 'pexels'
+gem "pexels"
 
-gem "pg_search"
+gem 'pg_search'
