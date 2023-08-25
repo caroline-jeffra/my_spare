@@ -6,7 +6,7 @@
   <div class="row justify-content-between align-content-center">
     <div class="w-50 p-2" style="background-image: url('<%= image_path @instrument.image_url%>'); background-size: contain; background-repeat: no-repeat;"></div>
 
-    <div class="col-3 pe-10 me-10">
+    <div class="col-6 px-5">
       <% if @instrument.model != '' %>
         <h2><%= @instrument.model %>, <%= @instrument.brand %></h2>
       <% end %>
@@ -18,7 +18,7 @@
 
       <div class="d-flex align-items-center">
         <div class="align-self-center me-2">For </div>
-        <div style="font-size: 2rem;"><%= @instrument.daily_price.to_i %>€ </div>
+        <div style="font-size: 2rem;">€ <%= @instrument.daily_price.to_i %></div>
         <div class="align-self-center ms-2">per day</div>
       </div>
 
