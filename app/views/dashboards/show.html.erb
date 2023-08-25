@@ -28,7 +28,10 @@
 
   <h2>Bookings of your instruments</h2>
   <% @instruments.each do |instrument| %>
-    <ul>
+    <% if instrument.bookings.length > 0 %>
+      <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
+    <% end %>
+    <ul class="cards-grid">
       <% instrument.bookings.each do |booking| %>
         <li class="card-instrument">
           <p>Booked by <%= booking.user.first_name %> (<%= booking.user.email %>)</p>
@@ -40,14 +43,14 @@
   <% end %>
 
   <h2>You have booked these instruments:</h2>
-  <div class="cards-grid">
+  <ul class="cards-grid">
     <% @bookings.each do |booking| %>
       <li class="card-instrument">
-      <%= image_tag booking.instrument.image_url, alt: "Image of #{booking.instrument.category}", height: 400 %>
+        <%= image_tag booking.instrument.image_url, alt: "Image of #{booking.instrument.category}", height: 400 %>
         <p>Booking:<br> <strong><%= booking.instrument.user.first_name %>'s <%= booking.instrument.category %></strong></p>
         <p>Dates: from <%= booking.start_date %> until <%= booking.end_date %></p>
         <p>Total cost: <%= booking.cost.to_i %>€<span><%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %></span></p>
       </li>
     <% end %>
-  </div>
+  </ul>
 </div>
