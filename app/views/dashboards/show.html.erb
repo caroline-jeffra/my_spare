@@ -1,59 +1,87 @@
-<h1>Hi <%= current_user.first_name %>, this is your Dashboard</h1>
-
-<%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }  %>
-
-<h2>Your instruments</h2>
-<div>
-  <% if @instruments.empty? %>
-    <p>You don't have any instruments</p>
-  <% end %>
-  <% @instruments.each do |instrument| %>
-
-    <p><%= instrument.brand %> - owned by <%= instrument.user.first_name %></p>
-
-    <div class="d-flex align-contents-center">
-      <div class="col-5">
-        <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
+<div id="main-container" class="main-container">
+  <div class="my-4">
+    <div class="flex-column">
+      <div class="d-flex justify-content-center">
+        <h1>Hi <%= current_user.first_name %>, this is your Dashboard</h1><br>
       </div>
-      <div class="col-5">
-        <h2>
-          <%= instrument.model %>, <%= instrument.brand %>
-        </h2>
-        <h3>
-          Located in <%= instrument.city %> for <%= instrument.daily_price %> per day.
-        </h3>
-        <p>
-          Description: <%= instrument.description %>
+      <div class="d-flex justify-content-center">
+        <p class="btn btn-outline-secondary nav-item">
+          <%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }  %>
         </p>
-
       </div>
     </div>
-  <% end %>
+  </div>
+
+  <div class="my-4">
+    <div class="my-2">
+      <div class="d-flex align-items-center justify-content-between">
+        <h2>Your instruments</h2>
+        <p class="btn btn-outline-secondary nav-item"><%= link_to "Add a new instrument", new_instrument_path %></p>
+      </div>
+    </div>
+    <div>
+      <% if @instruments.empty? %>
+        <p>You don't have any instruments</p>
+      <% end %>
+      <div class="cards-grid">
+        <% @instruments.each do |instrument| %>
+          <%= link_to instrument_path(instrument) do %>
+            <div class="card-instrument">
+              <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", height: 400 %>
+              <div class="d-flex align-items-center justify-content-center ">
+                <div class="text-center">
+                  <h2><%= instrument.category %> <%= instrument.brand %></h2>
+                  <h3><%= instrument.daily_price.to_i %> € per day</h3>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-4">
+    <h2>Bookings of your instruments</h2>
+    <div class="row">
+      <% @instruments.each do |instrument| %>
+        <% if instrument.bookings.length > 0 %>
+          <div class="d-flex align-items-center">
+            <div class="col-2">
+              <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", width: 200 %>
+            </div>
+            <h3>Your <%= instrument.category %></h3>
+          </div>
+        <% end %>
+        <ul class="cards-grid">
+          <% instrument.bookings.each do |booking| %>
+            <li class="card-instrument">
+                <p>Booked by <%= booking.user.first_name %></p>
+                <p>Contact email:  <%= booking.user.email %></p>
+                <p>Start <%= booking.start_date %></p>
+                <p>End <%= booking.end_date %></p>
+                <p>Income: <%= booking.cost.to_i %>€<span></p>
+                <p class="btn btn-outline-secondary nav-item"><%= link_to "Cancel this booking", booking_path(booking), data: { turbo_method: :delete } %></span></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="my-4">
+    <h2>You have booked these instruments:</h2>
+    <ul class="cards-grid">
+      <% @bookings.each do |booking| %>
+        <li class="card-instrument">
+          <%= image_tag booking.instrument.image_url, alt: "Image of #{booking.instrument.category}", height: 400 %>
+          <p>Booking:<br> <strong><%= booking.instrument.user.first_name %>'s <%= booking.instrument.category %></strong></p>
+          <p>Dates: from <%= booking.start_date %> until <%= booking.end_date %></p>
+          <div class="d-flex justify-space-between align-items-center">
+            <p>Total cost: <%= booking.cost.to_i %>€</p>
+            <p class="btn btn-outline-secondary nav-item"><%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
-<h2>Bookings of your instruments</h2>
-
-<% @instruments.each do |instrument| %>
-
-  <ul>
-    <% instrument.bookings.each do |booking| %>
-      <li>Booked by <%= booking.user.first_name %> (<%= booking.user.email %>)</li>
-      <%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %>
-
-    <% end %>
-  </ul>
-<% end %>
-
-
-<h2>Your bookings of other people's instruments</h2>
-
-<ul>
-  <% @bookings.each do |booking| %>
-    <li class="my-5">
-      <p>You've booked <%= booking.instrument.category %>-<%= booking.instrument.id %></p>
-      <p>The instrument is owned by: <%= booking.instrument.user.first_name %></p>
-      <p>You are renting this instrument from <%= booking.start_date %> until <%= booking.end_date %></p>
-      <%= link_to "Cancel booking", booking_path(booking), data: { turbo_method: :delete } %>
-    </li>
-  <% end %>
-</ul>
