@@ -7,5 +7,25 @@
       <a class="btn btn-flat" href="#">Apply now</a>
     </div>
 <div id="main-container" class="main-container">
-
+  <div class="cards-grid">
+    <% @instruments.each do |instrument| %>
+      <%= link_to instrument_path(instrument) do %>
+        <div class="card-instrument">
+          <%= image_tag(instrument.image_url, alt: instrument.category) %>
+          <div class="card-instrument-infos">
+            <div class="card-distance-owner">
+              <h3>Distance: <%=distance_from_user(instrument)%> km</h3>
+              <p><%=instrument.category%> from <%=instrument.user.first_name%></p>
+            </div>
+            <div class="card-notice">
+              <h4> Check this out!</h4>
+            </div>
+            <div class="card-price">
+              <h3>€ <%=instrument.daily_price%></h3>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
