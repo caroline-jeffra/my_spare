@@ -11,42 +11,46 @@
   </head>
 
   <body>
-    <nav>
-      <div class="navbar navbar-expand-sm navbar-light navbar-myspare">
-        <div class="container-fluid">
-          <%= link_to root_path do %>
-            <i class="fa-solid fa-guitar" style="color: $white" id="link_home">My Spare</i>
-          <% end %>
-          <div><%= render 'search_form' %></div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
-              <% if user_signed_in? %>
-                <li class="nav-item active">
-                  <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item dropdown">
-                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <%= link_to "Instruments index", instruments_path, class: "dropdown-item" %>
-                    <%= link_to "New instrument", new_instrument_path, class: "dropdown-item" %>
-                    <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
-                  </div>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "Sign up", new_user_session_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Sign up", new_user_session_path, class: "nav-link" %>
-                </li>
-              <% end %>
-            </ul>
+    <div class="nav-div">
+      <nav>
+        <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-myspare">
+          <div class="container-fluid">
+            <%= link_to root_path do %>
+              <i class="fa-solid fa-guitar" style="color: $white" id="link_home">My Spare</i>
+            <% end %>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div><%= render 'instruments/search_form' %></div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto">
+                <% if user_signed_in? %>
+                  <li class="nav-item active" id="link_dashboard">
+                    <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <%# The image_tag place holder is bellow this line:%>
+                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <%= link_to "Instruments index", instruments_path, class: "dropdown-item" %>
+                      <%= link_to "New instrument", new_instrument_path, class: "dropdown-item" %>
+                      <hr class="dropdown-divider">
+                      <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+                    </div>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
+      </nav>
+      <div>
+        <%= render "layouts/flashes" %>
       </div>
-    </nav>
-    <div>
-      <%= render "layouts/flashes" %>
     </div>
     <%= yield %>
   </body>
