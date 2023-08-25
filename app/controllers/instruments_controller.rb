@@ -13,7 +13,7 @@ class InstrumentsController < ApplicationController
     if params[:dates].present?
       @start_date = Date.parse(params[:dates].split(" to ").first)
       @end_date = Date.parse(params[:dates].split(" to ").last)
-      @instruments = Instrument.available_between(@start_date, @end_date)
+      @instruments = @instruments.available_between(@start_date, @end_date)
     end
     if params[:distance].present? && params[:distance].to_i != 100 && current_user.present?
       @instruments = @instruments.near(user_coordinates, params[:distance], units: :km)
