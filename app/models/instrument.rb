@@ -17,16 +17,15 @@ class Instrument < ApplicationRecord
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
 
-<<<<<<< HEAD
   def coordinates
     [latitude, longitude] if attributes.values_at("latitude", "longitude").all?
-=======
+  end
+
   def self.unavailable_between(start_date, end_date)
     joins(:bookings).merge(Booking.overlapping(start_date, end_date))
   end
 
   def self.available_between(start_date, end_date)
     where.not(id: unavailable_between(start_date, end_date).pluck(:id))
->>>>>>> 3ab3aa4a576ba1ff554339b48200bbf776dcbd4b
   end
 end
