@@ -42,7 +42,13 @@ INSTRUMENTS = [
     brand: "Fender",
     category: "Bass",
     daily_price: 45,
-    description: "https://www.fmicassets.com/Damroot/ZoomJpg/10001/0193972700_fen_ins_frt_1_rr.jpg",
+    description: <<~DESCRIPTION,
+    The American Professional II Jazz Bass® draws from more than sixty years of innovation, inspiration and evolution to meet the demands of today's working player.
+
+Our popular Slim "C" neck now sports smooth rolled fingerboard edges, a "Super-Natural" satin finish and a newly sculpted neck heel for a supremely comfortable feel and easy access to the upper register. New V-Mod II Jazz Bass single-coil pickups are more articulate than ever while delivering the punch and clarity the Jazz Bass is known for.
+
+The American Pro II Jazz Bass delivers instant familiarity and sonic versatility you'll feel and hear right away, with broad ranging improvements that add up to nothing less than a new standard for professional instruments.
+    DESCRIPTION
     image_url: "https://www.fmicassets.com/Damroot/ZoomJpg/10001/0193972700_fen_ins_frt_1_rr.jpg"
   },
   {
