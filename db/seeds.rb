@@ -7,6 +7,89 @@ Instrument.destroy_all
 User.destroy_all
 
 CITIES = ["Amsterdan", "Den Haag", "Utrecht", "Leiden", "Rotterdam"]
+INSTRUMENTS = [
+  {
+    model:,
+    brand: ,
+    category: "Electric Guitar",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Acoustic Guitar",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Bass",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Grand Piano",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Electric Piano",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Violin",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Cello",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Saxophone",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Drums",
+    daily_price:,
+    description:,
+    image_url:
+  },
+  {
+    model:,
+    brand: ,
+    category: "Flute",
+    daily_price:,
+    description:,
+    image_url:
+  }
+]
+
 
 puts "Introducing music to humankind (creating users)"
 # The default user password is "password". For different passwords use: Faker::Internet.password
