@@ -9,7 +9,8 @@ export default class extends Controller {
   connect() {
     flatpickr(this.element, {
       dateFormat: "Y-m-d",
-      disable: this.bookingsValue
+      disable: this.bookingsValue,
+      minDate: "today"
     })
   }
 }
