@@ -13,14 +13,9 @@
   color: $white;
 }
 
-#link_dashboard {
-  text-decoration: none;
-  color: $white;
-}
-
-#link_dashboard:hover {
-  text-decoration: none;
+.nav-link:hover {
   color: inherit;
+  text-decoration: white;
 }
 
 .nav-item{
