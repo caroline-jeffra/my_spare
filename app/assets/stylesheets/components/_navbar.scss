@@ -1,13 +1,50 @@
-.navbar-lewagon {
+.navbar-myspare {
   justify-content: space-between;
-  background: $white;
+  background: $o-blue;
   color: $light-gray;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 300px;
 }
 
-.navbar-lewagon .navbar-collapse {
+#link_home {
+  font-size: 30px;
+  text-decoration: none;
+  color: $white;
+}
+
+.nav-link:hover {
+  color: inherit;
+  text-decoration: white;
+}
+
+.nav-item{
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: $white;
+  color: white;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-div{
+  padding: 60px;
+}
+
+.nav-link{
+  color: $white;
+}
+
+.navbar-myspare .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-myspare .navbar-brand img {
   width: 40px;
 }
