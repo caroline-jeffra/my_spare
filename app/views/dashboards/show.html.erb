@@ -5,17 +5,15 @@
         <h1>Hi <%= current_user.first_name %>, this is your Dashboard</h1><br>
       </div>
       <div class="d-flex justify-content-center">
-        <p class="btn btn-outline-secondary nav-item">
-          <%= link_to "logout", destroy_user_session_path, data: { turbo_method: :delete }  %>
-        </p>
+
       </div>
     </div>
   </div>
 
-  <div class="my-4">
+  <div class="my-2 p-5 border border-2 rounded">
     <div class="my-2">
       <div class="d-flex align-items-center justify-content-between">
-        <h2>Your instruments</h2>
+        <h2 class="mb-4">Your instruments</h2>
         <p class="btn btn-outline-secondary nav-item"><%= link_to "Add a new instrument", new_instrument_path %></p>
       </div>
     </div>
@@ -41,16 +39,13 @@
     </div>
   </div>
 
-  <div class="my-4">
-    <h2>Bookings of your instruments</h2>
+  <div class="my-2 p-5 border border-2 rounded">
+    <h2 class="mb-4">Bookings of your instruments</h2>
     <div class="row">
       <% @instruments.each do |instrument| %>
         <% if instrument.bookings.length > 0 %>
-          <div class="d-flex align-items-center">
-            <div class="col-2">
-              <%= image_tag instrument.image_url, alt: "Image of #{instrument.category}", width: 200 %>
-            </div>
-            <h3>Your <%= instrument.category %></h3>
+          <div class="d-flex justify-content-center align-items-center">
+            <h3 class="m-3"><%= instrument.brand %> <%= instrument.model %> <%= instrument.category %></h3>
           </div>
         <% end %>
         <ul class="cards-grid">
@@ -68,8 +63,9 @@
       <% end %>
     </div>
   </div>
-  <div class="my-4">
-    <h2>You have booked these instruments:</h2>
+
+  <div class="my-2 p-5 border border-2 rounded">
+    <h2 class="mb-4">You have booked these instruments:</h2>
     <ul class="cards-grid">
       <% @bookings.each do |booking| %>
         <li class="card-instrument">
