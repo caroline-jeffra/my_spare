@@ -1,23 +1,38 @@
-<div class="container d-flex flex-column">
-  <div class="row">
+<div class="container d-flex p-5 flex-column border border-2 rounded">
+  <div class="row pb-3 align-content-center">
     <h1><%= @instrument.category %> offered by <%= @user.first_name %> <%= @user.last_name[0] %>.</h1>
   </div>
 
   <div class="row justify-content-between align-content-center">
     <div class="col-3">
-      <%= image_tag @instrument.image_url, alt: "Image of #{@instrument.category}", height: 400 %>
+      <%= image_tag @instrument.image_url, alt: "Image of #{@instrument.category}" %>
     </div>
+
     <div class="col-6 pe-10 me-10">
       <% if @instrument.model != '' %>
         <h2><%= @instrument.model %>, <%= @instrument.brand %></h2>
       <% end %>
-      <div class="d-flex align-items-center">
-        <p>Located in </p><h3> <%= @instrument.city %> </h3>
+
+      <div class="d-flex">
+        <div class="align-self-center me-2">Located in </div>
+        <div style="font-size: 2rem;"> <%= @instrument.city %></div>
       </div>
+
       <div class="d-flex align-items-center">
-        <p>for </p><h3><%= @instrument.daily_price.to_i %> € </h3><p>  per day.</p>
+        <div class="align-self-center me-2">For </div>
+        <div style="font-size: 2rem;"><%= @instrument.daily_price.to_i %>€ </div>
+        <div class="align-self-center ms-2">per day</div>
       </div>
+
+      <% if !@my_instrument %>
+        <div class="d-flex">
+          <div style="font-size: 2rem;"><%= @distance %> km </div>
+          <div class="align-self-center ms-2"> from you</div>
+        </div>
+      <% end %>
+
       <p>Description: <%= @instrument.description %></p>
+
       <% if @my_instrument %>
         <%= link_to 'Edit Instrument', edit_instrument_path(@instrument) %>
         <%= link_to 'Delete Instrument',
@@ -30,12 +45,14 @@
           </div>
         </div>
       <% else %>
-        <p>Distance from you: <%= @distance %> km</p>
         <div data-controller="toggle" class="mt-5">
-        <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book me!</button>
+        <button data-action="click->toggle#fire" class="btn btn-primary">Book me!</button>
         <div data-toggle-target="togglableElement" class="d-none"><%= render 'booking_form', booking: @booking, instrument: @instrument, instrument_bookings: @instrument_bookings %>
         </div>
       <% end %>
+
     </div>
+
   </div>
+
 </div>
