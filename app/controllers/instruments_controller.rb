@@ -5,6 +5,7 @@ class InstrumentsController < ApplicationController
   helper_method :distance_from_user
 
   def index
+    raise
     if params[:query].present?
       @instruments = Instrument.search(params[:query])
     else
@@ -67,8 +68,7 @@ class InstrumentsController < ApplicationController
       ).round
     else
       Geocoder::Calculations.distance_between(
-        [current_user.latitude, current_user.longitude],
-        [instrument.latitude, instrument.longitude]
+        current_user.coordinates, instrument.coordinates
       ).round
     end
   end
