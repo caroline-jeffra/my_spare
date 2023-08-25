@@ -15,7 +15,7 @@
       <div class="navbar navbar-expand-sm navbar-light navbar-myspare">
         <div class="container-fluid">
           <%= link_to root_path do %>
-            <div><h2 id="link_home">My Spare</h2></div>
+            <i class="fa-solid fa-guitar" style="color: $white" id="link_home">My Spare</i>
           <% end %>
           <div><%= render 'search_form' %></div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,7 +34,10 @@
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                  <%= link_to "Sign up", new_user_session_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Sign up", new_user_session_path, class: "nav-link" %>
                 </li>
               <% end %>
             </ul>

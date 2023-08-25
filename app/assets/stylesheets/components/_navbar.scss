@@ -2,11 +2,12 @@
   justify-content: space-between;
   background: $o-blue;
   color: $light-gray;
-
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #link_home {
-  // padding-left: 50px;
+  font-size: 30px;
   text-decoration: none;
   color: $white;
 }
