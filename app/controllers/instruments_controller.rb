@@ -5,7 +5,6 @@ class InstrumentsController < ApplicationController
   helper_method :distance_from_user
 
   def index
-    raise
     if params[:query].present?
       @instruments = Instrument.search(params[:query])
     else
