@@ -1,7 +1,7 @@
 # My Spare
 ## About the App
 My Spare is a web app marketplace where people can list their spare instruments for rent to others. Instrument owners can manage the details of their instruments and list them as unavailable. Users can search for instruments by type and availability as well as manage their bookings. 
-This app was developed during Le Wagon’s full time web dev bootcamp. It was designed, developed, demoed and deployed in one week. <a href=”https://my-spare-8fd837464826.herokuapp.com/”>Visit My Spare</a>
+This app was developed during Le Wagon’s full time web dev bootcamp. It was designed, developed, demoed and deployed in one week. <a href="https://my-spare-8fd837464826.herokuapp.com/">Visit My Spare</a>
 
 ## The Team
 <a href="https://www.linkedin.com/in/cjeffra/">Caroline Jeffra</a> | <a href="https://github.com/francescozz">Francesco Zeno Zencovich</a> | <a href="https://github.com/T-Lucio">Thiago Souza</a> | <a href="https://github.com/NathanSwulinski">Nathan Swulinski</a>
