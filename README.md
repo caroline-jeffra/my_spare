@@ -4,7 +4,7 @@ My Spare is a web app marketplace where people can list their spare instruments 
 This app was developed during Le Wagon’s full time web dev bootcamp. It was designed, developed, demoed and deployed in one week. <a href="https://my-spare-8fd837464826.herokuapp.com/">Visit My Spare</a>
 
 ## The Team
-<a href="https://www.linkedin.com/in/cjeffra/">Caroline Jeffra</a> | <a href="https://github.com/francescozz">Francesco Zeno Zencovich</a> | <a href="https://github.com/T-Lucio">Thiago Souza</a> | <a href="https://github.com/NathanSwulinski">Nathan Swulinski</a>
+<a href="https://www.linkedin.com/in/cjeffra/">Caroline Jeffra</a> | <a href="https://github.com/francescozz">Francesco Zeno Zencovich</a> | <a href="https://github.com/souza-t">Thiago Souza</a> | <a href="https://github.com/NathanSwulinski">Nathan Swulinski</a>
 
 ## The Tech Stack
 <p align="left">
